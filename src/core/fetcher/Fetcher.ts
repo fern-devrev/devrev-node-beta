@@ -42,7 +42,9 @@ export declare namespace Fetcher {
 }
 
 export const fetcher: FetchFunction = async (args) => {
-    const headers: Record<string, string> = {};
+    const headers: Record<string, string> = {
+        "X-Devrev-Scope": "Beta",
+    };
     if (args.body !== undefined && args.contentType != null) {
         headers["Content-Type"] = args.contentType;
     }
