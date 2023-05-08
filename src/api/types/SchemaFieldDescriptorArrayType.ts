@@ -17,43 +17,51 @@ export type SchemaFieldDescriptorArrayType =
     | DevRevBeta.SchemaFieldDescriptorArrayType.Tokens;
 
 export declare namespace SchemaFieldDescriptorArrayType {
-    interface Bool extends DevRevBeta.SchemaBoolListFieldDescriptor {
+    interface Bool extends DevRevBeta.SchemaBoolListFieldDescriptor, _Base {
         type: "bool";
     }
 
-    interface Composite extends DevRevBeta.SchemaCompositeListFieldDescriptor {
+    interface Composite extends DevRevBeta.SchemaCompositeListFieldDescriptor, _Base {
         type: "composite";
     }
 
-    interface Double extends DevRevBeta.SchemaDoubleListFieldDescriptor {
+    interface Double extends DevRevBeta.SchemaDoubleListFieldDescriptor, _Base {
         type: "double";
     }
 
-    interface Enum extends DevRevBeta.SchemaEnumListFieldDescriptor {
+    interface Enum extends DevRevBeta.SchemaEnumListFieldDescriptor, _Base {
         type: "enum";
     }
 
-    interface Id extends DevRevBeta.SchemaIdListFieldDescriptor {
+    interface Id extends DevRevBeta.SchemaIdListFieldDescriptor, _Base {
         type: "id";
     }
 
-    interface Int extends DevRevBeta.SchemaIntListFieldDescriptor {
+    interface Int extends DevRevBeta.SchemaIntListFieldDescriptor, _Base {
         type: "int";
     }
 
-    interface RichText extends DevRevBeta.SchemaRichTextListFieldDescriptor {
+    interface RichText extends DevRevBeta.SchemaRichTextListFieldDescriptor, _Base {
         type: "rich_text";
     }
 
-    interface Text extends DevRevBeta.SchemaTextListFieldDescriptor {
+    interface Text extends DevRevBeta.SchemaTextListFieldDescriptor, _Base {
         type: "text";
     }
 
-    interface Timestamp extends DevRevBeta.SchemaTimestampListFieldDescriptor {
+    interface Timestamp extends DevRevBeta.SchemaTimestampListFieldDescriptor, _Base {
         type: "timestamp";
     }
 
-    interface Tokens extends DevRevBeta.SchemaTokensListFieldDescriptor {
+    interface Tokens extends DevRevBeta.SchemaTokensListFieldDescriptor, _Base {
         type: "tokens";
+    }
+
+    interface _Base {
+        baseType: DevRevBeta.SchemaFieldDescriptorArrayTypeBaseType;
+        /** The maximum array length. */
+        maxItems?: number;
+        /** The minimum array length. */
+        minItems?: number;
     }
 }

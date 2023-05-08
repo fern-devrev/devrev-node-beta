@@ -7,7 +7,11 @@ import * as DevRevBeta from "..";
 export type OrgSummary = DevRevBeta.OrgSummary.RevOrg;
 
 export declare namespace OrgSummary {
-    interface RevOrg extends DevRevBeta.OrgBaseSummary {
+    interface RevOrg extends DevRevBeta.OrgBaseSummary, _Base {
         type: "rev_org";
+    }
+
+    interface _Base {
+        type: DevRevBeta.OrgType;
     }
 }

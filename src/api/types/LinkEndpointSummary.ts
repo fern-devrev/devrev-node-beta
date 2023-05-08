@@ -14,31 +14,35 @@ export type LinkEndpointSummary =
     | DevRevBeta.LinkEndpointSummary.Ticket;
 
 export declare namespace LinkEndpointSummary {
-    interface Capability extends DevRevBeta.PartBaseSummary {
+    interface Capability extends DevRevBeta.PartBaseSummary, _Base {
         type: "capability";
     }
 
-    interface Conversation extends DevRevBeta.ConversationSummary {
+    interface Conversation extends DevRevBeta.ConversationSummary, _Base {
         type: "conversation";
     }
 
-    interface Enhancement extends DevRevBeta.PartBaseSummary {
+    interface Enhancement extends DevRevBeta.PartBaseSummary, _Base {
         type: "enhancement";
     }
 
-    interface Feature extends DevRevBeta.PartBaseSummary {
+    interface Feature extends DevRevBeta.PartBaseSummary, _Base {
         type: "feature";
     }
 
-    interface Issue extends DevRevBeta.IssueSummary {
+    interface Issue extends DevRevBeta.IssueSummary, _Base {
         type: "issue";
     }
 
-    interface Product extends DevRevBeta.PartBaseSummary {
+    interface Product extends DevRevBeta.PartBaseSummary, _Base {
         type: "product";
     }
 
-    interface Ticket extends DevRevBeta.TicketSummary {
+    interface Ticket extends DevRevBeta.TicketSummary, _Base {
         type: "ticket";
+    }
+
+    interface _Base {
+        type: DevRevBeta.LinkEndpointType;
     }
 }

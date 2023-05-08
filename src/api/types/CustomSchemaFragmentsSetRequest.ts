@@ -10,16 +10,28 @@ export type CustomSchemaFragmentsSetRequest =
     | DevRevBeta.CustomSchemaFragmentsSetRequest.TenantFragment;
 
 export declare namespace CustomSchemaFragmentsSetRequest {
-    interface AppFragment extends DevRevBeta.CustomSchemaFragmentsSetRequestAppFragment {
+    interface AppFragment extends DevRevBeta.CustomSchemaFragmentsSetRequestAppFragment, _Base {
         type: "app_fragment";
     }
 
-    interface CustomTypeFragment extends DevRevBeta.CustomSchemaFragmentsSetRequestCustomTypeFragment {
+    interface CustomTypeFragment extends DevRevBeta.CustomSchemaFragmentsSetRequestCustomTypeFragment, _Base {
         type: "custom_type_fragment";
     }
 
-    interface TenantFragment {
+    interface TenantFragment extends _Base {
         type: "tenant_fragment";
         value: DevRevBeta.CustomSchemaFragmentsSetRequestTenantFragment;
+    }
+
+    interface _Base {
+        /** True if this fragment has been deprecated. */
+        deprecated?: boolean;
+        /** The description of the custom schema fragment. */
+        description: string;
+        /** List of all fields in this fragment. */
+        fields?: DevRevBeta.SchemaFieldDescriptor[];
+        /** The leaf type this fragment applies to. */
+        leafType: string;
+        type: DevRevBeta.CustomSchemaFragmentsSetRequestType;
     }
 }

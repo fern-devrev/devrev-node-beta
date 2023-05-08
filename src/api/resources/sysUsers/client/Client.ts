@@ -50,6 +50,9 @@ export class SysUsers {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@fern-api/devrev-beta",
+                "X-Fern-SDK-Version": "0.3.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -91,6 +94,9 @@ export class SysUsers {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "@fern-api/devrev-beta",
+                "X-Fern-SDK-Version": "0.3.0",
             },
             contentType: "application/json",
             body: await serializers.SysUsersUpdateRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
