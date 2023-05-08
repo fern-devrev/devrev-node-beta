@@ -21,52 +21,48 @@ export type SchemaFieldDescriptor =
     | DevRevBeta.SchemaFieldDescriptor.Tokens;
 
 export declare namespace SchemaFieldDescriptor {
-    interface Array extends _Base {
+    interface Array {
         type: "array";
         value: DevRevBeta.SchemaFieldDescriptorArrayType;
     }
 
-    interface Bool extends DevRevBeta.SchemaBoolFieldDescriptor, _Base {
+    interface Bool extends DevRevBeta.SchemaBoolFieldDescriptor {
         type: "bool";
     }
 
-    interface Composite extends DevRevBeta.SchemaCompositeFieldDescriptor, _Base {
+    interface Composite extends DevRevBeta.SchemaCompositeFieldDescriptor {
         type: "composite";
     }
 
-    interface Double extends DevRevBeta.SchemaDoubleFieldDescriptor, _Base {
+    interface Double extends DevRevBeta.SchemaDoubleFieldDescriptor {
         type: "double";
     }
 
-    interface Enum extends DevRevBeta.SchemaEnumFieldDescriptor, _Base {
+    interface Enum extends DevRevBeta.SchemaEnumFieldDescriptor {
         type: "enum";
     }
 
-    interface Id extends DevRevBeta.SchemaIdFieldDescriptor, _Base {
+    interface Id extends DevRevBeta.SchemaIdFieldDescriptor {
         type: "id";
     }
 
-    interface Int extends DevRevBeta.SchemaIntFieldDescriptor, _Base {
+    interface Int extends DevRevBeta.SchemaIntFieldDescriptor {
         type: "int";
     }
 
-    interface RichText extends DevRevBeta.SchemaRichTextFieldDescriptor, _Base {
+    interface RichText extends DevRevBeta.SchemaRichTextFieldDescriptor {
         type: "rich_text";
     }
 
-    interface Text extends DevRevBeta.SchemaTextFieldDescriptor, _Base {
+    interface Text extends DevRevBeta.SchemaTextFieldDescriptor {
         type: "text";
     }
 
-    interface Timestamp extends DevRevBeta.SchemaTimestampFieldDescriptor, _Base {
+    interface Timestamp extends DevRevBeta.SchemaTimestampFieldDescriptor {
         type: "timestamp";
     }
 
-    interface Tokens extends DevRevBeta.SchemaTokensFieldDescriptor, _Base {
+    interface Tokens extends DevRevBeta.SchemaTokensFieldDescriptor {
         type: "tokens";
-    }
-
-    interface _Base {
-        fieldType: DevRevBeta.SchemaFieldDescriptorFieldType;
     }
 }

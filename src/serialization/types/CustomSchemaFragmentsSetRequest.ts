@@ -13,7 +13,6 @@ const _Base = core.serialization.object({
         .list(core.serialization.lazy(async () => (await import("..")).SchemaFieldDescriptor))
         .optional(),
     leafType: core.serialization.property("leaf_type", core.serialization.string()),
-    type: core.serialization.lazy(async () => (await import("..")).CustomSchemaFragmentsSetRequestType),
 });
 export const CustomSchemaFragmentsSetRequest: core.serialization.Schema<
     serializers.CustomSchemaFragmentsSetRequest.Raw,
@@ -63,6 +62,5 @@ export declare namespace CustomSchemaFragmentsSetRequest {
         description: string;
         fields?: serializers.SchemaFieldDescriptor.Raw[] | null;
         leaf_type: string;
-        type: serializers.CustomSchemaFragmentsSetRequestType.Raw;
     }
 }

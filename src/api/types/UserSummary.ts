@@ -10,19 +10,15 @@ export type UserSummary =
     | DevRevBeta.UserSummary.SysUser;
 
 export declare namespace UserSummary {
-    interface DevUser extends DevRevBeta.UserBaseSummary, _Base {
+    interface DevUser extends DevRevBeta.UserBaseSummary {
         type: "dev_user";
     }
 
-    interface RevUser extends DevRevBeta.RevUserSummary, _Base {
+    interface RevUser extends DevRevBeta.RevUserSummary {
         type: "rev_user";
     }
 
-    interface SysUser extends DevRevBeta.UserBaseSummary, _Base {
+    interface SysUser extends DevRevBeta.UserBaseSummary {
         type: "sys_user";
-    }
-
-    interface _Base {
-        type: DevRevBeta.UserType;
     }
 }

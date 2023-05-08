@@ -7,10 +7,6 @@ import * as serializers from "..";
 import * as DevRevBeta from "../../api";
 
 const _Base = core.serialization.object({
-    baseType: core.serialization.property(
-        "base_type",
-        core.serialization.lazy(async () => (await import("..")).SchemaFieldDescriptorArrayTypeBaseType)
-    ),
     maxItems: core.serialization.property("max_items", core.serialization.number().optional()),
     minItems: core.serialization.property("min_items", core.serialization.number().optional()),
 });
@@ -105,7 +101,6 @@ export declare namespace SchemaFieldDescriptorArrayType {
     }
 
     interface _Base {
-        base_type: serializers.SchemaFieldDescriptorArrayTypeBaseType.Raw;
         max_items?: number | null;
         min_items?: number | null;
     }

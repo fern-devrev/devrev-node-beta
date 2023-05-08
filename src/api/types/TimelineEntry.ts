@@ -7,11 +7,7 @@ import * as DevRevBeta from "..";
 export type TimelineEntry = DevRevBeta.TimelineEntry.TimelineComment;
 
 export declare namespace TimelineEntry {
-    interface TimelineComment extends DevRevBeta.TimelineComment, _Base {
+    interface TimelineComment extends DevRevBeta.TimelineComment {
         type: "timeline_comment";
-    }
-
-    interface _Base {
-        type: DevRevBeta.TimelineEntryType;
     }
 }

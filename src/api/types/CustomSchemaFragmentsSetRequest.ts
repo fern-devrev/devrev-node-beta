@@ -32,6 +32,5 @@ export declare namespace CustomSchemaFragmentsSetRequest {
         fields?: DevRevBeta.SchemaFieldDescriptor[];
         /** The leaf type this fragment applies to. */
         leafType: string;
-        type: DevRevBeta.CustomSchemaFragmentsSetRequestType;
     }
 }

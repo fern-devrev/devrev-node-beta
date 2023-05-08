@@ -58,7 +58,6 @@ export declare namespace SchemaFieldDescriptorArrayType {
     }
 
     interface _Base {
-        baseType: DevRevBeta.SchemaFieldDescriptorArrayTypeBaseType;
         /** The maximum array length. */
         maxItems?: number;
         /** The minimum array length. */
