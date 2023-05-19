@@ -5,6 +5,7 @@
 export interface ConversationsExportRequest {
     appliesToParts?: string | string[];
     first?: number;
+    group?: string | string[];
     members?: string | string[];
     ownedBy?: string | string[];
     revOrg?: string | string[];

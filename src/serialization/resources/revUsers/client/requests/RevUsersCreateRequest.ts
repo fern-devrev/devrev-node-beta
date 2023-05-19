@@ -10,6 +10,14 @@ export const RevUsersCreateRequest: core.serialization.Schema<
     serializers.RevUsersCreateRequest.Raw,
     DevRevBeta.RevUsersCreateRequest
 > = core.serialization.object({
+    customFields: core.serialization.property(
+        "custom_fields",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
+    customSchemaFragments: core.serialization.property(
+        "custom_schema_fragments",
+        core.serialization.list(core.serialization.string()).optional()
+    ),
     description: core.serialization.string().optional(),
     displayName: core.serialization.property("display_name", core.serialization.string().optional()),
     email: core.serialization.string().optional(),
@@ -23,6 +31,8 @@ export const RevUsersCreateRequest: core.serialization.Schema<
 
 export declare namespace RevUsersCreateRequest {
     interface Raw {
+        custom_fields?: Record<string, unknown> | null;
+        custom_schema_fragments?: string[] | null;
         description?: string | null;
         display_name?: string | null;
         email?: string | null;

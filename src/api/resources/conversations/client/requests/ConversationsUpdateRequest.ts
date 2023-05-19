@@ -15,6 +15,7 @@ export interface ConversationsUpdateRequest {
     stage?: DevRevBeta.StageUpdate;
     /** The updated status of the conversation. */
     status?: string;
+    tags?: DevRevBeta.ConversationsUpdateRequestTags;
     /** The updated title of the conversation. */
     title?: string;
 }

@@ -10,6 +10,16 @@ export const RevUsersUpdateRequest: core.serialization.Schema<
     serializers.RevUsersUpdateRequest.Raw,
     DevRevBeta.RevUsersUpdateRequest
 > = core.serialization.object({
+    customFields: core.serialization.property(
+        "custom_fields",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
+    customSchemaFragments: core.serialization.property(
+        "custom_schema_fragments",
+        core.serialization
+            .lazyObject(async () => (await import("../../../..")).RevUsersUpdateRequestCustomSchemaFragments)
+            .optional()
+    ),
     description: core.serialization.string().optional(),
     displayName: core.serialization.property("display_name", core.serialization.string().optional()),
     email: core.serialization.string().optional(),
@@ -19,6 +29,8 @@ export const RevUsersUpdateRequest: core.serialization.Schema<
 
 export declare namespace RevUsersUpdateRequest {
     interface Raw {
+        custom_fields?: Record<string, unknown> | null;
+        custom_schema_fragments?: serializers.RevUsersUpdateRequestCustomSchemaFragments.Raw | null;
         description?: string | null;
         display_name?: string | null;
         email?: string | null;

@@ -5,6 +5,8 @@
 import * as DevRevBeta from "..";
 
 export interface RevUser {
+    /** Custom schema fragments. */
+    customSchemaFragments?: string[];
     /** Description of the Rev user. */
     description?: string;
     /**
@@ -17,4 +19,6 @@ export interface RevUser {
      */
     externalRef?: string;
     revOrg?: DevRevBeta.OrgSummary;
+    /** Stock schema fragment. */
+    stockSchemaFragment?: string;
 }

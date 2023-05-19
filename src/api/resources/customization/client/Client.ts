@@ -46,7 +46,7 @@ export class Customization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/devrev-beta",
-                "X-Fern-SDK-Version": "0.3.1",
+                "X-Fern-SDK-Version": "0.3.2",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -95,7 +95,7 @@ export class Customization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/devrev-beta",
-                "X-Fern-SDK-Version": "0.3.1",
+                "X-Fern-SDK-Version": "0.3.2",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -201,7 +201,7 @@ export class Customization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/devrev-beta",
-                "X-Fern-SDK-Version": "0.3.1",
+                "X-Fern-SDK-Version": "0.3.2",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -247,7 +247,7 @@ export class Customization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/devrev-beta",
-                "X-Fern-SDK-Version": "0.3.1",
+                "X-Fern-SDK-Version": "0.3.2",
             },
             contentType: "application/json",
             body: await serializers.CustomSchemaFragmentsSetRequest.jsonOrThrow(request, {
@@ -257,138 +257,6 @@ export class Customization {
         });
         if (_response.ok) {
             return await serializers.CustomSchemaFragmentsSetResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-            });
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.DevRevBetaError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.DevRevBetaError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.DevRevBetaTimeoutError();
-            case "unknown":
-                throw new errors.DevRevBetaError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    public async stockSchemaFragmentsGet(
-        request: DevRevBeta.StockSchemaFragmentsGetRequest = {}
-    ): Promise<DevRevBeta.StockSchemaFragmentsGetResponse> {
-        const { id, leafType } = request;
-        const _queryParams = new URLSearchParams();
-        if (id != null) {
-            _queryParams.append("id", id);
-        }
-
-        if (leafType != null) {
-            _queryParams.append("leaf_type", leafType);
-        }
-
-        const _response = await core.fetcher({
-            url: urlJoin(this.options.environment ?? environments.DevRevBetaEnvironment.Default, "schemas.stock.get"),
-            method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "@fern-api/devrev-beta",
-                "X-Fern-SDK-Version": "0.3.1",
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            timeoutMs: 60000,
-        });
-        if (_response.ok) {
-            return await serializers.StockSchemaFragmentsGetResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-            });
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.DevRevBetaError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.DevRevBetaError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.DevRevBetaTimeoutError();
-            case "unknown":
-                throw new errors.DevRevBetaError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    public async stockSchemaFragmentsList(
-        request: DevRevBeta.StockSchemaFragmentsListRequest = {}
-    ): Promise<DevRevBeta.StockSchemaFragmentsListResponse> {
-        const { cursor, leafType, limit, sortBy } = request;
-        const _queryParams = new URLSearchParams();
-        if (cursor != null) {
-            _queryParams.append("cursor", cursor);
-        }
-
-        if (leafType != null) {
-            if (Array.isArray(leafType)) {
-                for (const _item of leafType) {
-                    _queryParams.append("leaf_type", _item);
-                }
-            } else {
-                _queryParams.append("leaf_type", leafType);
-            }
-        }
-
-        if (limit != null) {
-            _queryParams.append("limit", limit.toString());
-        }
-
-        if (sortBy != null) {
-            if (Array.isArray(sortBy)) {
-                for (const _item of sortBy) {
-                    _queryParams.append("sort_by", _item);
-                }
-            } else {
-                _queryParams.append("sort_by", sortBy);
-            }
-        }
-
-        const _response = await core.fetcher({
-            url: urlJoin(this.options.environment ?? environments.DevRevBetaEnvironment.Default, "schemas.stock.list"),
-            method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "@fern-api/devrev-beta",
-                "X-Fern-SDK-Version": "0.3.1",
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            timeoutMs: 60000,
-        });
-        if (_response.ok) {
-            return await serializers.StockSchemaFragmentsListResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -431,7 +299,7 @@ export class Customization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/devrev-beta",
-                "X-Fern-SDK-Version": "0.3.1",
+                "X-Fern-SDK-Version": "0.3.2",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -439,288 +307,6 @@ export class Customization {
         });
         if (_response.ok) {
             return await serializers.SubtypesListResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-            });
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.DevRevBetaError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.DevRevBetaError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.DevRevBetaTimeoutError();
-            case "unknown":
-                throw new errors.DevRevBetaError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    public async customStagesGet(
-        request: DevRevBeta.CustomStagesGetRequest
-    ): Promise<DevRevBeta.CustomStagesGetResponse> {
-        const { id } = request;
-        const _queryParams = new URLSearchParams();
-        _queryParams.append("id", id);
-        const _response = await core.fetcher({
-            url: urlJoin(this.options.environment ?? environments.DevRevBetaEnvironment.Default, "stages.custom.get"),
-            method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "@fern-api/devrev-beta",
-                "X-Fern-SDK-Version": "0.3.1",
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            timeoutMs: 60000,
-        });
-        if (_response.ok) {
-            return await serializers.CustomStagesGetResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-            });
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.DevRevBetaError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.DevRevBetaError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.DevRevBetaTimeoutError();
-            case "unknown":
-                throw new errors.DevRevBetaError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    public async customStagesList(
-        request: DevRevBeta.CustomStagesListRequest = {}
-    ): Promise<DevRevBeta.CustomStagesListResponse> {
-        const { cursor, limit, marketplaceRefId, name, ordinal, sortBy, stateIdId } = request;
-        const _queryParams = new URLSearchParams();
-        if (cursor != null) {
-            _queryParams.append("cursor", cursor);
-        }
-
-        if (limit != null) {
-            _queryParams.append("limit", limit.toString());
-        }
-
-        if (marketplaceRefId != null) {
-            _queryParams.append("marketplace_ref.id", marketplaceRefId);
-        }
-
-        if (name != null) {
-            if (Array.isArray(name)) {
-                for (const _item of name) {
-                    _queryParams.append("name", _item);
-                }
-            } else {
-                _queryParams.append("name", name);
-            }
-        }
-
-        if (ordinal != null) {
-            if (Array.isArray(ordinal)) {
-                for (const _item of ordinal) {
-                    _queryParams.append("ordinal", _item.toString());
-                }
-            } else {
-                _queryParams.append("ordinal", ordinal.toString());
-            }
-        }
-
-        if (sortBy != null) {
-            if (Array.isArray(sortBy)) {
-                for (const _item of sortBy) {
-                    _queryParams.append("sort_by", _item);
-                }
-            } else {
-                _queryParams.append("sort_by", sortBy);
-            }
-        }
-
-        if (stateIdId != null) {
-            _queryParams.append("state_id.id", stateIdId);
-        }
-
-        const _response = await core.fetcher({
-            url: urlJoin(this.options.environment ?? environments.DevRevBetaEnvironment.Default, "stages.custom.list"),
-            method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "@fern-api/devrev-beta",
-                "X-Fern-SDK-Version": "0.3.1",
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            timeoutMs: 60000,
-        });
-        if (_response.ok) {
-            return await serializers.CustomStagesListResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-            });
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.DevRevBetaError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.DevRevBetaError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.DevRevBetaTimeoutError();
-            case "unknown":
-                throw new errors.DevRevBetaError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    public async customStatesGet(
-        request: DevRevBeta.CustomStatesGetRequest
-    ): Promise<DevRevBeta.CustomStatesGetResponse> {
-        const { id } = request;
-        const _queryParams = new URLSearchParams();
-        _queryParams.append("id", id);
-        const _response = await core.fetcher({
-            url: urlJoin(this.options.environment ?? environments.DevRevBetaEnvironment.Default, "states.custom.get"),
-            method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "@fern-api/devrev-beta",
-                "X-Fern-SDK-Version": "0.3.1",
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            timeoutMs: 60000,
-        });
-        if (_response.ok) {
-            return await serializers.CustomStatesGetResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-            });
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.DevRevBetaError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.DevRevBetaError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.DevRevBetaTimeoutError();
-            case "unknown":
-                throw new errors.DevRevBetaError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    public async customStatesList(
-        request: DevRevBeta.CustomStatesListRequest = {}
-    ): Promise<DevRevBeta.CustomStatesListResponse> {
-        const { cursor, isFinal, limit, name, ordinal, sortBy } = request;
-        const _queryParams = new URLSearchParams();
-        if (cursor != null) {
-            _queryParams.append("cursor", cursor);
-        }
-
-        if (isFinal != null) {
-            _queryParams.append("is_final", isFinal.toString());
-        }
-
-        if (limit != null) {
-            _queryParams.append("limit", limit.toString());
-        }
-
-        if (name != null) {
-            if (Array.isArray(name)) {
-                for (const _item of name) {
-                    _queryParams.append("name", _item);
-                }
-            } else {
-                _queryParams.append("name", name);
-            }
-        }
-
-        if (ordinal != null) {
-            if (Array.isArray(ordinal)) {
-                for (const _item of ordinal) {
-                    _queryParams.append("ordinal", _item.toString());
-                }
-            } else {
-                _queryParams.append("ordinal", ordinal.toString());
-            }
-        }
-
-        if (sortBy != null) {
-            if (Array.isArray(sortBy)) {
-                for (const _item of sortBy) {
-                    _queryParams.append("sort_by", _item);
-                }
-            } else {
-                _queryParams.append("sort_by", sortBy);
-            }
-        }
-
-        const _response = await core.fetcher({
-            url: urlJoin(this.options.environment ?? environments.DevRevBetaEnvironment.Default, "states.custom.list"),
-            method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "@fern-api/devrev-beta",
-                "X-Fern-SDK-Version": "0.3.1",
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            timeoutMs: 60000,
-        });
-        if (_response.ok) {
-            return await serializers.CustomStatesListResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,

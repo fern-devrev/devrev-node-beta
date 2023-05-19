@@ -12,22 +12,21 @@ export const SchemaFieldDescriptorBase: core.serialization.ObjectSchema<
 > = core.serialization.object({
     description: core.serialization.string().optional(),
     isFilterable: core.serialization.property("is_filterable", core.serialization.boolean().optional()),
-    isPersonallyIdentifiableInformation: core.serialization.property(
-        "is_personally_identifiable_information",
-        core.serialization.boolean().optional()
-    ),
+    isPii: core.serialization.property("is_pii", core.serialization.boolean().optional()),
     isRequired: core.serialization.property("is_required", core.serialization.boolean().optional()),
     name: core.serialization.string(),
     origin: core.serialization.string().optional(),
+    ui: core.serialization.lazyObject(async () => (await import("..")).SchemaFieldUiMetadata).optional(),
 });
 
 export declare namespace SchemaFieldDescriptorBase {
     interface Raw {
         description?: string | null;
         is_filterable?: boolean | null;
-        is_personally_identifiable_information?: boolean | null;
+        is_pii?: boolean | null;
         is_required?: boolean | null;
         name: string;
         origin?: string | null;
+        ui?: serializers.SchemaFieldUiMetadata.Raw | null;
     }
 }

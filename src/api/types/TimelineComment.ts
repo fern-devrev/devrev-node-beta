@@ -14,6 +14,5 @@ export interface TimelineComment {
      */
     body?: string;
     bodyType?: DevRevBeta.TimelineCommentBodyType;
-    /** The SnapKit Body of the comment. */
-    snapKitBody?: Record<string, unknown>;
+    snapKitBody?: DevRevBeta.TimelineSnapKitBody;
 }

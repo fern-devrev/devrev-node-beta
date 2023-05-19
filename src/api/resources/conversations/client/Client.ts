@@ -33,7 +33,7 @@ export class Conversations {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/devrev-beta",
-                "X-Fern-SDK-Version": "0.3.1",
+                "X-Fern-SDK-Version": "0.3.2",
             },
             contentType: "application/json",
             body: await serializers.ConversationsCreateRequest.jsonOrThrow(request, {
@@ -84,7 +84,7 @@ export class Conversations {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/devrev-beta",
-                "X-Fern-SDK-Version": "0.3.1",
+                "X-Fern-SDK-Version": "0.3.2",
             },
             contentType: "application/json",
             body: await serializers.ConversationsDeleteRequest.jsonOrThrow(request, {
@@ -125,7 +125,7 @@ export class Conversations {
     public async export(
         request: DevRevBeta.ConversationsExportRequest = {}
     ): Promise<DevRevBeta.ConversationsExportResponse> {
-        const { appliesToParts, first, members, ownedBy, revOrg, sourceChannels, stageName, tags } = request;
+        const { appliesToParts, first, group, members, ownedBy, revOrg, sourceChannels, stageName, tags } = request;
         const _queryParams = new URLSearchParams();
         if (appliesToParts != null) {
             if (Array.isArray(appliesToParts)) {
@@ -139,6 +139,16 @@ export class Conversations {
 
         if (first != null) {
             _queryParams.append("first", first.toString());
+        }
+
+        if (group != null) {
+            if (Array.isArray(group)) {
+                for (const _item of group) {
+                    _queryParams.append("group", _item);
+                }
+            } else {
+                _queryParams.append("group", group);
+            }
         }
 
         if (members != null) {
@@ -211,7 +221,7 @@ export class Conversations {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/devrev-beta",
-                "X-Fern-SDK-Version": "0.3.1",
+                "X-Fern-SDK-Version": "0.3.2",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -258,7 +268,7 @@ export class Conversations {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/devrev-beta",
-                "X-Fern-SDK-Version": "0.3.1",
+                "X-Fern-SDK-Version": "0.3.2",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -297,8 +307,19 @@ export class Conversations {
     public async list(
         request: DevRevBeta.ConversationsListRequest = {}
     ): Promise<DevRevBeta.ConversationsListResponse> {
-        const { appliesToParts, cursor, limit, members, mode, ownedBy, revOrg, sourceChannels, stageName, tags } =
-            request;
+        const {
+            appliesToParts,
+            cursor,
+            group,
+            limit,
+            members,
+            mode,
+            ownedBy,
+            revOrg,
+            sourceChannels,
+            stageName,
+            tags,
+        } = request;
         const _queryParams = new URLSearchParams();
         if (appliesToParts != null) {
             if (Array.isArray(appliesToParts)) {
@@ -312,6 +333,16 @@ export class Conversations {
 
         if (cursor != null) {
             _queryParams.append("cursor", cursor);
+        }
+
+        if (group != null) {
+            if (Array.isArray(group)) {
+                for (const _item of group) {
+                    _queryParams.append("group", _item);
+                }
+            } else {
+                _queryParams.append("group", group);
+            }
         }
 
         if (limit != null) {
@@ -389,7 +420,7 @@ export class Conversations {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/devrev-beta",
-                "X-Fern-SDK-Version": "0.3.1",
+                "X-Fern-SDK-Version": "0.3.2",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -438,7 +469,7 @@ export class Conversations {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/devrev-beta",
-                "X-Fern-SDK-Version": "0.3.1",
+                "X-Fern-SDK-Version": "0.3.2",
             },
             contentType: "application/json",
             body: await serializers.ConversationsUpdateRequest.jsonOrThrow(request, {

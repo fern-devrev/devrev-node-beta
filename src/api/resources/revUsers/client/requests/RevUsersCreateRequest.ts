@@ -3,6 +3,10 @@
  */
 
 export interface RevUsersCreateRequest {
+    /** Application-defined custom fields. */
+    customFields?: Record<string, unknown>;
+    /** The schema fragment IDs associated with the Rev user. */
+    customSchemaFragments?: string[];
     /** Description of the Rev user. */
     description?: string;
     /**

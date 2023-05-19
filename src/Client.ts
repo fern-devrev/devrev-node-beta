@@ -6,6 +6,7 @@ import * as environments from "./environments";
 import * as core from "./core";
 import { Conversations } from "./api/resources/conversations/client/Client";
 import { Links } from "./api/resources/links/client/Client";
+import { RevOrgs } from "./api/resources/revOrgs/client/Client";
 import { RevUsers } from "./api/resources/revUsers/client/Client";
 import { Customization } from "./api/resources/customization/client/Client";
 import { SysUsers } from "./api/resources/sysUsers/client/Client";
@@ -30,6 +31,12 @@ export class DevRevBetaClient {
 
     public get links(): Links {
         return (this._links ??= new Links(this.options));
+    }
+
+    protected _revOrgs: RevOrgs | undefined;
+
+    public get revOrgs(): RevOrgs {
+        return (this._revOrgs ??= new RevOrgs(this.options));
     }
 
     protected _revUsers: RevUsers | undefined;

@@ -21,6 +21,9 @@ export const ConversationsUpdateRequest: core.serialization.Schema<
     id: core.serialization.string(),
     stage: core.serialization.lazyObject(async () => (await import("../../../..")).StageUpdate).optional(),
     status: core.serialization.string().optional(),
+    tags: core.serialization
+        .lazyObject(async () => (await import("../../../..")).ConversationsUpdateRequestTags)
+        .optional(),
     title: core.serialization.string().optional(),
 });
 
@@ -32,6 +35,7 @@ export declare namespace ConversationsUpdateRequest {
         id: string;
         stage?: serializers.StageUpdate.Raw | null;
         status?: string | null;
+        tags?: serializers.ConversationsUpdateRequestTags.Raw | null;
         title?: string | null;
     }
 }

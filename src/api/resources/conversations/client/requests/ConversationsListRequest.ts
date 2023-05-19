@@ -7,6 +7,7 @@ import * as DevRevBeta from "../../../..";
 export interface ConversationsListRequest {
     appliesToParts?: string | string[];
     cursor?: string;
+    group?: string | string[];
     limit?: number;
     members?: string | string[];
     mode?: DevRevBeta.ListMode;
