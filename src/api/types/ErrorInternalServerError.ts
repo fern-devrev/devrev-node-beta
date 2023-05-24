@@ -4,12 +4,12 @@
 
 import * as DevRevBeta from "..";
 
-export interface ErrorInternalServerError {
+export interface ErrorInternalServerError extends DevRevBeta.ErrorBase {
     /**
      * A unique ID that's generated for the error that can be used for
      * inquiry.
      *
      */
     referenceId?: string;
-    type?: DevRevBeta.ErrorInternalServerErrorType;
+    type: DevRevBeta.ErrorInternalServerErrorType;
 }

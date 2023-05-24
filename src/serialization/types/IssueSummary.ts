@@ -7,12 +7,14 @@ import * as DevRevBeta from "../../api";
 import * as core from "../../core";
 
 export const IssueSummary: core.serialization.ObjectSchema<serializers.IssueSummary.Raw, DevRevBeta.IssueSummary> =
-    core.serialization.object({
-        priority: core.serialization.lazy(async () => (await import("..")).IssuePriority).optional(),
-    });
+    core.serialization
+        .object({
+            priority: core.serialization.lazy(async () => (await import("..")).IssuePriority).optional(),
+        })
+        .extend(core.serialization.lazyObject(async () => (await import("..")).WorkBaseSummary));
 
 export declare namespace IssueSummary {
-    interface Raw {
+    interface Raw extends serializers.WorkBaseSummary.Raw {
         priority?: serializers.IssuePriority.Raw | null;
     }
 }

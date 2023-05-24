@@ -9,19 +9,21 @@ import * as core from "../../core";
 export const SchemaTextFieldDescriptor: core.serialization.ObjectSchema<
     serializers.SchemaTextFieldDescriptor.Raw,
     DevRevBeta.SchemaTextFieldDescriptor
-> = core.serialization.object({
-    contains: core.serialization.string().optional(),
-    defaultValue: core.serialization.property("default_value", core.serialization.string().optional()),
-    eqLen: core.serialization.property("eq_len", core.serialization.number().optional()),
-    maxLen: core.serialization.property("max_len", core.serialization.number().optional()),
-    minLen: core.serialization.property("min_len", core.serialization.number().optional()),
-    pattern: core.serialization.string().optional(),
-    prefix: core.serialization.string().optional(),
-    suffix: core.serialization.string().optional(),
-});
+> = core.serialization
+    .object({
+        contains: core.serialization.string().optional(),
+        defaultValue: core.serialization.property("default_value", core.serialization.string().optional()),
+        eqLen: core.serialization.property("eq_len", core.serialization.number().optional()),
+        maxLen: core.serialization.property("max_len", core.serialization.number().optional()),
+        minLen: core.serialization.property("min_len", core.serialization.number().optional()),
+        pattern: core.serialization.string().optional(),
+        prefix: core.serialization.string().optional(),
+        suffix: core.serialization.string().optional(),
+    })
+    .extend(core.serialization.lazyObject(async () => (await import("..")).SchemaFieldDescriptorBase));
 
 export declare namespace SchemaTextFieldDescriptor {
-    interface Raw {
+    interface Raw extends serializers.SchemaFieldDescriptorBase.Raw {
         contains?: string | null;
         default_value?: string | null;
         eq_len?: number | null;

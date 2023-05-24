@@ -4,7 +4,7 @@
 
 import * as DevRevBeta from "..";
 
-export interface Conversation {
+export interface Conversation extends DevRevBeta.AtomBase {
     /** Description of the conversation object. */
     description?: string;
     group?: DevRevBeta.GroupSummary;

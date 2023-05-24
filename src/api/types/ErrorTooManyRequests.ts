@@ -4,11 +4,11 @@
 
 import * as DevRevBeta from "..";
 
-export interface ErrorTooManyRequests {
+export interface ErrorTooManyRequests extends DevRevBeta.ErrorBase {
     /**
      * The number of seconds after which the client should retry.
      *
      */
     retryAfter?: number;
-    type?: DevRevBeta.ErrorTooManyRequestsType;
+    type: DevRevBeta.ErrorTooManyRequestsType;
 }

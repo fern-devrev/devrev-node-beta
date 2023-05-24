@@ -10,7 +10,7 @@ export const SchemaFieldDescriptor: core.serialization.Schema<
     serializers.SchemaFieldDescriptor.Raw,
     DevRevBeta.SchemaFieldDescriptor
 > = core.serialization
-    .union("type", {
+    .union(core.serialization.discriminant("fieldType", "field_type"), {
         array: core.serialization.object({
             value: core.serialization.lazy(async () => (await import("..")).SchemaFieldDescriptorArrayType),
         }),
@@ -45,47 +45,47 @@ export declare namespace SchemaFieldDescriptor {
         | SchemaFieldDescriptor.Tokens;
 
     interface Array {
-        type: "array";
+        field_type: "array";
         value: serializers.SchemaFieldDescriptorArrayType.Raw;
     }
 
     interface Bool extends serializers.SchemaBoolFieldDescriptor.Raw {
-        type: "bool";
+        field_type: "bool";
     }
 
     interface Composite extends serializers.SchemaCompositeFieldDescriptor.Raw {
-        type: "composite";
+        field_type: "composite";
     }
 
     interface Double extends serializers.SchemaDoubleFieldDescriptor.Raw {
-        type: "double";
+        field_type: "double";
     }
 
     interface Enum extends serializers.SchemaEnumFieldDescriptor.Raw {
-        type: "enum";
+        field_type: "enum";
     }
 
     interface Id extends serializers.SchemaIdFieldDescriptor.Raw {
-        type: "id";
+        field_type: "id";
     }
 
     interface Int extends serializers.SchemaIntFieldDescriptor.Raw {
-        type: "int";
+        field_type: "int";
     }
 
     interface RichText extends serializers.SchemaRichTextFieldDescriptor.Raw {
-        type: "rich_text";
+        field_type: "rich_text";
     }
 
     interface Text extends serializers.SchemaTextFieldDescriptor.Raw {
-        type: "text";
+        field_type: "text";
     }
 
     interface Timestamp extends serializers.SchemaTimestampFieldDescriptor.Raw {
-        type: "timestamp";
+        field_type: "timestamp";
     }
 
     interface Tokens extends serializers.SchemaTokensFieldDescriptor.Raw {
-        type: "tokens";
+        field_type: "tokens";
     }
 }

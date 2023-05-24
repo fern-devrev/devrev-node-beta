@@ -4,8 +4,8 @@
 
 import * as DevRevBeta from "..";
 
-export interface Link {
-    linkType?: DevRevBeta.LinkType;
-    source?: DevRevBeta.LinkEndpointSummary;
-    target?: DevRevBeta.LinkEndpointSummary;
+export interface Link extends DevRevBeta.AtomBase {
+    linkType: DevRevBeta.LinkType;
+    source: DevRevBeta.LinkEndpointSummary;
+    target: DevRevBeta.LinkEndpointSummary;
 }

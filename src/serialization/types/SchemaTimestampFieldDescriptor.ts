@@ -9,12 +9,14 @@ import * as core from "../../core";
 export const SchemaTimestampFieldDescriptor: core.serialization.ObjectSchema<
     serializers.SchemaTimestampFieldDescriptor.Raw,
     DevRevBeta.SchemaTimestampFieldDescriptor
-> = core.serialization.object({
-    defaultValue: core.serialization.property("default_value", core.serialization.string().optional()),
-});
+> = core.serialization
+    .object({
+        defaultValue: core.serialization.property("default_value", core.serialization.string().optional()),
+    })
+    .extend(core.serialization.lazyObject(async () => (await import("..")).SchemaFieldDescriptorBase));
 
 export declare namespace SchemaTimestampFieldDescriptor {
-    interface Raw {
+    interface Raw extends serializers.SchemaFieldDescriptorBase.Raw {
         default_value?: string | null;
     }
 }

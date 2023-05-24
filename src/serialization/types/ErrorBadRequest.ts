@@ -9,12 +9,14 @@ import * as core from "../../core";
 export const ErrorBadRequest: core.serialization.ObjectSchema<
     serializers.ErrorBadRequest.Raw,
     DevRevBeta.ErrorBadRequest
-> = core.serialization.object({
-    type: core.serialization.lazy(async () => (await import("..")).ErrorBadRequestType).optional(),
-});
+> = core.serialization
+    .object({
+        type: core.serialization.lazy(async () => (await import("..")).ErrorBadRequestType),
+    })
+    .extend(core.serialization.lazyObject(async () => (await import("..")).ErrorBase));
 
 export declare namespace ErrorBadRequest {
-    interface Raw {
-        type?: serializers.ErrorBadRequestType.Raw | null;
+    interface Raw extends serializers.ErrorBase.Raw {
+        type: serializers.ErrorBadRequestType.Raw;
     }
 }

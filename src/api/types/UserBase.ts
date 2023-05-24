@@ -4,7 +4,7 @@
 
 import * as DevRevBeta from "..";
 
-export interface UserBase {
+export interface UserBase extends DevRevBeta.AtomBase {
     /**
      * The user's display name. The name is non-unique and mutable.
      *

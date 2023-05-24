@@ -7,22 +7,26 @@ import * as DevRevBeta from "../../api";
 import * as core from "../../core";
 
 export const Conversation: core.serialization.ObjectSchema<serializers.Conversation.Raw, DevRevBeta.Conversation> =
-    core.serialization.object({
-        description: core.serialization.string().optional(),
-        group: core.serialization.lazyObject(async () => (await import("..")).GroupSummary).optional(),
-        messages: core.serialization
-            .list(core.serialization.lazy(async () => (await import("..")).TimelineEntry))
-            .optional(),
-        ownedBy: core.serialization.property(
-            "owned_by",
-            core.serialization.list(core.serialization.lazy(async () => (await import("..")).UserSummary)).optional()
-        ),
-        stage: core.serialization.lazyObject(async () => (await import("..")).Stage).optional(),
-        title: core.serialization.string().optional(),
-    });
+    core.serialization
+        .object({
+            description: core.serialization.string().optional(),
+            group: core.serialization.lazyObject(async () => (await import("..")).GroupSummary).optional(),
+            messages: core.serialization
+                .list(core.serialization.lazy(async () => (await import("..")).TimelineEntry))
+                .optional(),
+            ownedBy: core.serialization.property(
+                "owned_by",
+                core.serialization
+                    .list(core.serialization.lazy(async () => (await import("..")).UserSummary))
+                    .optional()
+            ),
+            stage: core.serialization.lazyObject(async () => (await import("..")).Stage).optional(),
+            title: core.serialization.string().optional(),
+        })
+        .extend(core.serialization.lazyObject(async () => (await import("..")).AtomBase));
 
 export declare namespace Conversation {
-    interface Raw {
+    interface Raw extends serializers.AtomBase.Raw {
         description?: string | null;
         group?: serializers.GroupSummary.Raw | null;
         messages?: serializers.TimelineEntry.Raw[] | null;

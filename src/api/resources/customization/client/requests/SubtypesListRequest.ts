@@ -3,5 +3,8 @@
  */
 
 export interface SubtypesListRequest {
+    /**
+     * Leaf type for which subtypes are required.
+     */
     leafType: string;
 }

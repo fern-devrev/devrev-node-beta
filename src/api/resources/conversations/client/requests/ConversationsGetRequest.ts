@@ -3,5 +3,8 @@
  */
 
 export interface ConversationsGetRequest {
+    /**
+     * The requested conversation's ID.
+     */
     id: string;
 }

@@ -3,5 +3,8 @@
  */
 
 export interface LinksGetRequest {
+    /**
+     * The requested link's ID.
+     */
     id: string;
 }

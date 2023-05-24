@@ -4,7 +4,7 @@
 
 import * as DevRevBeta from "..";
 
-export interface TimelineComment {
+export interface TimelineComment extends DevRevBeta.TimelineEntryBase {
     /** The artifacts for the comment. */
     artifacts?: DevRevBeta.ArtifactSummary[];
     /**

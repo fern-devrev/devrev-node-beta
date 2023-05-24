@@ -9,13 +9,15 @@ import * as core from "../../core";
 export const SchemaIdFieldDescriptor: core.serialization.ObjectSchema<
     serializers.SchemaIdFieldDescriptor.Raw,
     DevRevBeta.SchemaIdFieldDescriptor
-> = core.serialization.object({
-    defaultValue: core.serialization.property("default_value", core.serialization.string().optional()),
-    idType: core.serialization.property("id_type", core.serialization.list(core.serialization.string()).optional()),
-});
+> = core.serialization
+    .object({
+        defaultValue: core.serialization.property("default_value", core.serialization.string().optional()),
+        idType: core.serialization.property("id_type", core.serialization.list(core.serialization.string()).optional()),
+    })
+    .extend(core.serialization.lazyObject(async () => (await import("..")).SchemaFieldDescriptorBase));
 
 export declare namespace SchemaIdFieldDescriptor {
-    interface Raw {
+    interface Raw extends serializers.SchemaFieldDescriptorBase.Raw {
         default_value?: string | null;
         id_type?: string[] | null;
     }

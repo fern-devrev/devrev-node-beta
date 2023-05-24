@@ -9,12 +9,14 @@ import * as core from "../../core";
 export const ConversationSummary: core.serialization.ObjectSchema<
     serializers.ConversationSummary.Raw,
     DevRevBeta.ConversationSummary
-> = core.serialization.object({
-    title: core.serialization.string().optional(),
-});
+> = core.serialization
+    .object({
+        title: core.serialization.string().optional(),
+    })
+    .extend(core.serialization.lazyObject(async () => (await import("..")).AtomBaseSummary));
 
 export declare namespace ConversationSummary {
-    interface Raw {
+    interface Raw extends serializers.AtomBaseSummary.Raw {
         title?: string | null;
     }
 }

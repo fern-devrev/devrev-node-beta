@@ -3,13 +3,47 @@
  */
 
 export interface ConversationsExportRequest {
+    /**
+     * Filters for conversations belonging to any of the provided parts.
+     *
+     */
     appliesToParts?: string | string[];
+    /**
+     * The number of conversation items to return. The default is '50', the
+     * maximum is '5000'.
+     *
+     */
     first?: number;
+    /**
+     * Filters for conversation that belong to the given groups.
+     */
     group?: string | string[];
+    /**
+     * Filters for conversations where these users are participants.
+     *
+     */
     members?: string | string[];
+    /**
+     * Filters for conversations owned by any of these users.
+     */
     ownedBy?: string | string[];
+    /**
+     * Filters for conversations that are associated with any of the
+     * provided Rev organizations.
+     *
+     */
     revOrg?: string | string[];
+    /**
+     * Filters for conversations with any of the provided source channels.
+     *
+     */
     sourceChannels?: string | string[];
+    /**
+     * Filters for records in the provided stage(s).
+     */
     stageName?: string | string[];
+    /**
+     * Filters for conversations with any of the provided tags.
+     */
     tags?: string | string[];
 }

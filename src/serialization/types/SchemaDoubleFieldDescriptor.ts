@@ -9,12 +9,14 @@ import * as core from "../../core";
 export const SchemaDoubleFieldDescriptor: core.serialization.ObjectSchema<
     serializers.SchemaDoubleFieldDescriptor.Raw,
     DevRevBeta.SchemaDoubleFieldDescriptor
-> = core.serialization.object({
-    defaultValue: core.serialization.property("default_value", core.serialization.number().optional()),
-});
+> = core.serialization
+    .object({
+        defaultValue: core.serialization.property("default_value", core.serialization.number().optional()),
+    })
+    .extend(core.serialization.lazyObject(async () => (await import("..")).SchemaFieldDescriptorBase));
 
 export declare namespace SchemaDoubleFieldDescriptor {
-    interface Raw {
+    interface Raw extends serializers.SchemaFieldDescriptorBase.Raw {
         default_value?: number | null;
     }
 }

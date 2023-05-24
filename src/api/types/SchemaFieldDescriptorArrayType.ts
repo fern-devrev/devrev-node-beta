@@ -18,43 +18,43 @@ export type SchemaFieldDescriptorArrayType =
 
 export declare namespace SchemaFieldDescriptorArrayType {
     interface Bool extends DevRevBeta.SchemaBoolListFieldDescriptor, _Base {
-        type: "bool";
+        baseType: "bool";
     }
 
     interface Composite extends DevRevBeta.SchemaCompositeListFieldDescriptor, _Base {
-        type: "composite";
+        baseType: "composite";
     }
 
     interface Double extends DevRevBeta.SchemaDoubleListFieldDescriptor, _Base {
-        type: "double";
+        baseType: "double";
     }
 
     interface Enum extends DevRevBeta.SchemaEnumListFieldDescriptor, _Base {
-        type: "enum";
+        baseType: "enum";
     }
 
     interface Id extends DevRevBeta.SchemaIdListFieldDescriptor, _Base {
-        type: "id";
+        baseType: "id";
     }
 
     interface Int extends DevRevBeta.SchemaIntListFieldDescriptor, _Base {
-        type: "int";
+        baseType: "int";
     }
 
     interface RichText extends DevRevBeta.SchemaRichTextListFieldDescriptor, _Base {
-        type: "rich_text";
+        baseType: "rich_text";
     }
 
     interface Text extends DevRevBeta.SchemaTextListFieldDescriptor, _Base {
-        type: "text";
+        baseType: "text";
     }
 
     interface Timestamp extends DevRevBeta.SchemaTimestampListFieldDescriptor, _Base {
-        type: "timestamp";
+        baseType: "timestamp";
     }
 
     interface Tokens extends DevRevBeta.SchemaTokensListFieldDescriptor, _Base {
-        type: "tokens";
+        baseType: "tokens";
     }
 
     interface _Base {

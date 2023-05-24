@@ -3,5 +3,8 @@
  */
 
 export interface CustomSchemaFragmentsGetRequest {
+    /**
+     * The ID of the custom schema fragment.
+     */
     id: string;
 }

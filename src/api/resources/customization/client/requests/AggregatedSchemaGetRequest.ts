@@ -3,6 +3,13 @@
  */
 
 export interface AggregatedSchemaGetRequest {
+    /**
+     * The list of custom schema fragment DONs which are to be aggregated.
+     *
+     */
     customSchemaFragmentIds?: string | string[];
+    /**
+     * The stock schema fragment which is to be aggregated.
+     */
     stockSchemaFragmentId: string;
 }

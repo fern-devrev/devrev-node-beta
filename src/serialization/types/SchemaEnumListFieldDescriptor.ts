@@ -9,20 +9,22 @@ import * as core from "../../core";
 export const SchemaEnumListFieldDescriptor: core.serialization.ObjectSchema<
     serializers.SchemaEnumListFieldDescriptor.Raw,
     DevRevBeta.SchemaEnumListFieldDescriptor
-> = core.serialization.object({
-    allowedValues: core.serialization.property(
-        "allowed_values",
-        core.serialization.list(core.serialization.string()).optional()
-    ),
-    defaultValue: core.serialization.property(
-        "default_value",
-        core.serialization.list(core.serialization.string()).optional()
-    ),
-});
+> = core.serialization
+    .object({
+        allowedValues: core.serialization.property(
+            "allowed_values",
+            core.serialization.list(core.serialization.string())
+        ),
+        defaultValue: core.serialization.property(
+            "default_value",
+            core.serialization.list(core.serialization.string()).optional()
+        ),
+    })
+    .extend(core.serialization.lazyObject(async () => (await import("..")).SchemaFieldDescriptorBase));
 
 export declare namespace SchemaEnumListFieldDescriptor {
-    interface Raw {
-        allowed_values?: string[] | null;
+    interface Raw extends serializers.SchemaFieldDescriptorBase.Raw {
+        allowed_values: string[];
         default_value?: string[] | null;
     }
 }

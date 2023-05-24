@@ -6,8 +6,8 @@ import * as serializers from "..";
 import * as DevRevBeta from "../../api";
 import * as core from "../../core";
 
-export const RevOrg: core.serialization.ObjectSchema<serializers.RevOrg.Raw, DevRevBeta.RevOrg> =
-    core.serialization.object({
+export const RevOrg: core.serialization.ObjectSchema<serializers.RevOrg.Raw, DevRevBeta.RevOrg> = core.serialization
+    .object({
         customSchemaFragments: core.serialization.property(
             "custom_schema_fragments",
             core.serialization.list(core.serialization.string()).optional()
@@ -19,10 +19,11 @@ export const RevOrg: core.serialization.ObjectSchema<serializers.RevOrg.Raw, Dev
             "stock_schema_fragment",
             core.serialization.string().optional()
         ),
-    });
+    })
+    .extend(core.serialization.lazyObject(async () => (await import("..")).OrgBase));
 
 export declare namespace RevOrg {
-    interface Raw {
+    interface Raw extends serializers.OrgBase.Raw {
         custom_schema_fragments?: string[] | null;
         description?: string | null;
         domain?: string | null;

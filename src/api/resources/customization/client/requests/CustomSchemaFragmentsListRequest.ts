@@ -5,11 +5,35 @@
 import * as DevRevBeta from "../../../..";
 
 export interface CustomSchemaFragmentsListRequest {
+    /**
+     * The list of app names.
+     */
     app?: string | string[];
+    /**
+     * The cursor to resume iteration from, otherwise if not provided, then
+     * iteration starts from the beginning.
+     *
+     */
     cursor?: string;
+    /**
+     * The list of leaf types.
+     */
     leafType?: string | string[];
+    /**
+     * The maximum number of items.
+     */
     limit?: number;
+    /**
+     * The list of fields to sort the items by and how to sort them.
+     *
+     */
     sortBy?: string | string[];
+    /**
+     * The list of subtypes.
+     */
     subtype?: string | string[];
+    /**
+     * Filters for custom schema fragment of the provided types.
+     */
     types?: DevRevBeta.CustomSchemaFragmentType | DevRevBeta.CustomSchemaFragmentType[];
 }

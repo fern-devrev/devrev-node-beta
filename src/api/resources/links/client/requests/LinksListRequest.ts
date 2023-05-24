@@ -5,11 +5,44 @@
 import * as DevRevBeta from "../../../..";
 
 export interface LinksListRequest {
+    /**
+     * The ID of the object to list the links for.
+     */
     object: string;
+    /**
+     * The cursor to resume iteration from. If not provided, then iteration
+     * starts from the beginning.
+     *
+     */
     cursor?: string;
+    /**
+     * The direction of the links to list, otherwise if not present, then
+     * links in both directions (source and target) are included.
+     *
+     */
     direction?: DevRevBeta.LinksDirection;
+    /**
+     * The maximum number of links to return. If not set, then the default
+     * is '50'.
+     *
+     */
     limit?: number;
+    /**
+     * The link type(s) to filter for, otherwise if not present, all link
+     * types are included.
+     *
+     */
     linkType?: DevRevBeta.LinkType | DevRevBeta.LinkType[];
+    /**
+     * The iteration mode to use, otherwise if not set, then "after" is
+     * used.
+     *
+     */
     mode?: DevRevBeta.ListMode;
+    /**
+     * The link types to filter for, otherwise if not present, all link
+     * types are included.
+     *
+     */
     types?: DevRevBeta.LinkType | DevRevBeta.LinkType[];
 }

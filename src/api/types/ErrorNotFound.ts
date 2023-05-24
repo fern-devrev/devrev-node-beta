@@ -4,6 +4,6 @@
 
 import * as DevRevBeta from "..";
 
-export interface ErrorNotFound {
-    type?: DevRevBeta.ErrorNotFoundType;
+export interface ErrorNotFound extends DevRevBeta.ErrorBase {
+    type: DevRevBeta.ErrorNotFoundType;
 }

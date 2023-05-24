@@ -3,5 +3,8 @@
  */
 
 export interface RevUsersGetRequest {
+    /**
+     * The ID of Rev user to be retrieved.
+     */
     id: string;
 }

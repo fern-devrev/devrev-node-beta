@@ -9,19 +9,21 @@ import * as core from "../../core";
 export const SchemaIntListFieldDescriptor: core.serialization.ObjectSchema<
     serializers.SchemaIntListFieldDescriptor.Raw,
     DevRevBeta.SchemaIntListFieldDescriptor
-> = core.serialization.object({
-    defaultValue: core.serialization.property(
-        "default_value",
-        core.serialization.list(core.serialization.number()).optional()
-    ),
-    gt: core.serialization.number().optional(),
-    gte: core.serialization.number().optional(),
-    lt: core.serialization.number().optional(),
-    lte: core.serialization.number().optional(),
-});
+> = core.serialization
+    .object({
+        defaultValue: core.serialization.property(
+            "default_value",
+            core.serialization.list(core.serialization.number()).optional()
+        ),
+        gt: core.serialization.number().optional(),
+        gte: core.serialization.number().optional(),
+        lt: core.serialization.number().optional(),
+        lte: core.serialization.number().optional(),
+    })
+    .extend(core.serialization.lazyObject(async () => (await import("..")).SchemaFieldDescriptorBase));
 
 export declare namespace SchemaIntListFieldDescriptor {
-    interface Raw {
+    interface Raw extends serializers.SchemaFieldDescriptorBase.Raw {
         default_value?: number[] | null;
         gt?: number | null;
         gte?: number | null;

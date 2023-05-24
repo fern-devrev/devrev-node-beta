@@ -9,15 +9,17 @@ import * as core from "../../core";
 export const SchemaBoolListFieldDescriptor: core.serialization.ObjectSchema<
     serializers.SchemaBoolListFieldDescriptor.Raw,
     DevRevBeta.SchemaBoolListFieldDescriptor
-> = core.serialization.object({
-    defaultValue: core.serialization.property(
-        "default_value",
-        core.serialization.list(core.serialization.boolean()).optional()
-    ),
-});
+> = core.serialization
+    .object({
+        defaultValue: core.serialization.property(
+            "default_value",
+            core.serialization.list(core.serialization.boolean()).optional()
+        ),
+    })
+    .extend(core.serialization.lazyObject(async () => (await import("..")).SchemaFieldDescriptorBase));
 
 export declare namespace SchemaBoolListFieldDescriptor {
-    interface Raw {
+    interface Raw extends serializers.SchemaFieldDescriptorBase.Raw {
         default_value?: boolean[] | null;
     }
 }

@@ -9,12 +9,14 @@ import * as core from "../../core";
 export const SchemaCompositeListFieldDescriptor: core.serialization.ObjectSchema<
     serializers.SchemaCompositeListFieldDescriptor.Raw,
     DevRevBeta.SchemaCompositeListFieldDescriptor
-> = core.serialization.object({
-    compositeType: core.serialization.property("composite_type", core.serialization.string().optional()),
-});
+> = core.serialization
+    .object({
+        compositeType: core.serialization.property("composite_type", core.serialization.string().optional()),
+    })
+    .extend(core.serialization.lazyObject(async () => (await import("..")).SchemaFieldDescriptorBase));
 
 export declare namespace SchemaCompositeListFieldDescriptor {
-    interface Raw {
+    interface Raw extends serializers.SchemaFieldDescriptorBase.Raw {
         composite_type?: string | null;
     }
 }

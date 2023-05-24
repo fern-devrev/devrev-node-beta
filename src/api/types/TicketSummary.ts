@@ -4,7 +4,7 @@
 
 import * as DevRevBeta from "..";
 
-export interface TicketSummary {
+export interface TicketSummary extends DevRevBeta.WorkBaseSummary {
     revOrg?: DevRevBeta.OrgSummary;
     severity?: DevRevBeta.TicketSeverity;
 }

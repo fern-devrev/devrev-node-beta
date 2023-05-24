@@ -4,7 +4,7 @@
 
 import * as DevRevBeta from "..";
 
-export interface RevUser {
+export interface RevUser extends DevRevBeta.UserBase {
     /** Custom schema fragments. */
     customSchemaFragments?: string[];
     /** Description of the Rev user. */

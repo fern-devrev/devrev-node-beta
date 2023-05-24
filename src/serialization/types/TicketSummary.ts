@@ -7,16 +7,18 @@ import * as DevRevBeta from "../../api";
 import * as core from "../../core";
 
 export const TicketSummary: core.serialization.ObjectSchema<serializers.TicketSummary.Raw, DevRevBeta.TicketSummary> =
-    core.serialization.object({
-        revOrg: core.serialization.property(
-            "rev_org",
-            core.serialization.lazy(async () => (await import("..")).OrgSummary).optional()
-        ),
-        severity: core.serialization.lazy(async () => (await import("..")).TicketSeverity).optional(),
-    });
+    core.serialization
+        .object({
+            revOrg: core.serialization.property(
+                "rev_org",
+                core.serialization.lazy(async () => (await import("..")).OrgSummary).optional()
+            ),
+            severity: core.serialization.lazy(async () => (await import("..")).TicketSeverity).optional(),
+        })
+        .extend(core.serialization.lazyObject(async () => (await import("..")).WorkBaseSummary));
 
 export declare namespace TicketSummary {
-    interface Raw {
+    interface Raw extends serializers.WorkBaseSummary.Raw {
         rev_org?: serializers.OrgSummary.Raw | null;
         severity?: serializers.TicketSeverity.Raw | null;
     }

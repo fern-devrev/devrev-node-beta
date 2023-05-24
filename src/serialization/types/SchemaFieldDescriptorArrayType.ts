@@ -14,7 +14,7 @@ export const SchemaFieldDescriptorArrayType: core.serialization.Schema<
     serializers.SchemaFieldDescriptorArrayType.Raw,
     DevRevBeta.SchemaFieldDescriptorArrayType
 > = core.serialization
-    .union("type", {
+    .union(core.serialization.discriminant("baseType", "base_type"), {
         bool: core.serialization
             .lazyObject(async () => (await import("..")).SchemaBoolListFieldDescriptor)
             .extend(_Base),
@@ -61,43 +61,43 @@ export declare namespace SchemaFieldDescriptorArrayType {
         | SchemaFieldDescriptorArrayType.Tokens;
 
     interface Bool extends _Base, serializers.SchemaBoolListFieldDescriptor.Raw {
-        type: "bool";
+        base_type: "bool";
     }
 
     interface Composite extends _Base, serializers.SchemaCompositeListFieldDescriptor.Raw {
-        type: "composite";
+        base_type: "composite";
     }
 
     interface Double extends _Base, serializers.SchemaDoubleListFieldDescriptor.Raw {
-        type: "double";
+        base_type: "double";
     }
 
     interface Enum extends _Base, serializers.SchemaEnumListFieldDescriptor.Raw {
-        type: "enum";
+        base_type: "enum";
     }
 
     interface Id extends _Base, serializers.SchemaIdListFieldDescriptor.Raw {
-        type: "id";
+        base_type: "id";
     }
 
     interface Int extends _Base, serializers.SchemaIntListFieldDescriptor.Raw {
-        type: "int";
+        base_type: "int";
     }
 
     interface RichText extends _Base, serializers.SchemaRichTextListFieldDescriptor.Raw {
-        type: "rich_text";
+        base_type: "rich_text";
     }
 
     interface Text extends _Base, serializers.SchemaTextListFieldDescriptor.Raw {
-        type: "text";
+        base_type: "text";
     }
 
     interface Timestamp extends _Base, serializers.SchemaTimestampListFieldDescriptor.Raw {
-        type: "timestamp";
+        base_type: "timestamp";
     }
 
     interface Tokens extends _Base, serializers.SchemaTokensListFieldDescriptor.Raw {
-        type: "tokens";
+        base_type: "tokens";
     }
 
     interface _Base {

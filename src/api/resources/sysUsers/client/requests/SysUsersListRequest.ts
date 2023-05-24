@@ -5,8 +5,27 @@
 import * as DevRevBeta from "../../../..";
 
 export interface SysUsersListRequest {
+    /**
+     * The cursor to resume iteration from. If not provided, then iteration
+     * starts from the beginning.
+     *
+     */
     cursor?: string;
+    /**
+     * The maximum number of system users to return. Value can range from
+     * '1' to '100', with a default of '50'.
+     *
+     */
     limit?: number;
+    /**
+     * The iteration mode to use, otherwise if not set, then "after" is
+     * used.
+     *
+     */
     mode?: DevRevBeta.ListMode;
+    /**
+     * Fields to sort the system users by and the direction to sort them.
+     *
+     */
     sortBy?: string | string[];
 }

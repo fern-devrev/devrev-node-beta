@@ -4,6 +4,6 @@
 
 import * as DevRevBeta from "..";
 
-export interface IssueSummary {
+export interface IssueSummary extends DevRevBeta.WorkBaseSummary {
     priority?: DevRevBeta.IssuePriority;
 }

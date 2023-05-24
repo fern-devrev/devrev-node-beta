@@ -22,47 +22,47 @@ export type SchemaFieldDescriptor =
 
 export declare namespace SchemaFieldDescriptor {
     interface Array {
-        type: "array";
+        fieldType: "array";
         value: DevRevBeta.SchemaFieldDescriptorArrayType;
     }
 
     interface Bool extends DevRevBeta.SchemaBoolFieldDescriptor {
-        type: "bool";
+        fieldType: "bool";
     }
 
     interface Composite extends DevRevBeta.SchemaCompositeFieldDescriptor {
-        type: "composite";
+        fieldType: "composite";
     }
 
     interface Double extends DevRevBeta.SchemaDoubleFieldDescriptor {
-        type: "double";
+        fieldType: "double";
     }
 
     interface Enum extends DevRevBeta.SchemaEnumFieldDescriptor {
-        type: "enum";
+        fieldType: "enum";
     }
 
     interface Id extends DevRevBeta.SchemaIdFieldDescriptor {
-        type: "id";
+        fieldType: "id";
     }
 
     interface Int extends DevRevBeta.SchemaIntFieldDescriptor {
-        type: "int";
+        fieldType: "int";
     }
 
     interface RichText extends DevRevBeta.SchemaRichTextFieldDescriptor {
-        type: "rich_text";
+        fieldType: "rich_text";
     }
 
     interface Text extends DevRevBeta.SchemaTextFieldDescriptor {
-        type: "text";
+        fieldType: "text";
     }
 
     interface Timestamp extends DevRevBeta.SchemaTimestampFieldDescriptor {
-        type: "timestamp";
+        fieldType: "timestamp";
     }
 
     interface Tokens extends DevRevBeta.SchemaTokensFieldDescriptor {
-        type: "tokens";
+        fieldType: "tokens";
     }
 }

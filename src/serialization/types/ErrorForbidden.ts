@@ -9,12 +9,14 @@ import * as core from "../../core";
 export const ErrorForbidden: core.serialization.ObjectSchema<
     serializers.ErrorForbidden.Raw,
     DevRevBeta.ErrorForbidden
-> = core.serialization.object({
-    type: core.serialization.lazy(async () => (await import("..")).ErrorForbiddenType).optional(),
-});
+> = core.serialization
+    .object({
+        type: core.serialization.lazy(async () => (await import("..")).ErrorForbiddenType),
+    })
+    .extend(core.serialization.lazyObject(async () => (await import("..")).ErrorBase));
 
 export declare namespace ErrorForbidden {
-    interface Raw {
-        type?: serializers.ErrorForbiddenType.Raw | null;
+    interface Raw extends serializers.ErrorBase.Raw {
+        type: serializers.ErrorForbiddenType.Raw;
     }
 }
